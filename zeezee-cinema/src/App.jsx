@@ -1,11 +1,16 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import HomePage from './pages/HomePage';
+import MovieDetailPage from './pages/MovieDetailPage';
 
 function App() {
-
     return (
-        <>
-            Hello Vite-React!
-        </>
-    )
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/movie" element={<MovieDetailPage />} />
+            </Routes>
+        </BrowserRouter>
+    );
 }
 
-export default App
+export default App;
