@@ -3,7 +3,7 @@ import MovieList from '../component/MovieList.jsx/MovieList';
 function HomePage() {
     return (
         <>
-            <h1>homepage</h1>
+            <h1 className="text-3xl font-bold underline">homepage</h1>
             <Carousel />
             <MovieList />
             <MovieList />
