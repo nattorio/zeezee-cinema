@@ -1,9 +1,9 @@
 function MovieCard() {
+    const Title = 'movieTitle';
     return (
         <article>
-            <h3>movieTitle</h3>
-            <img src="" alt="" />
-            <p>movieDesc</p>
+            <img src="../../assets/error.png" alt="" />
+            <h3>{Title}</h3>
         </article>
     );
 }
