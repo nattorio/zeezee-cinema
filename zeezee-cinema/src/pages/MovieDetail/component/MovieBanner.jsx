@@ -12,10 +12,10 @@ function MovieBanner() {
     useEffect(() => {
         async function fetchMovieData() {
             try {
-                const movieData = await moviesApi.getMovieDetails(980489, 'ko-KR');
+                const movieData = await moviesApi.getMovieDetails(299534, 'ko-KR');
                 setMovie(movieData);
 
-                const imageData = await moviesApi.getMovieImages(980489, 'en');
+                const imageData = await moviesApi.getMovieImages(299534, 'en');
                 setImages(imageData.backdrops);
             } catch (err) {
                 setError('영화 정보를 불러올 수 없습니다.');
