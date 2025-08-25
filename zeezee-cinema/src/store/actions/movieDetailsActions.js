@@ -13,7 +13,7 @@ export const fetchMovieFullDetails = (movieId) => {
 
         try {
             const movieDetails = await tmdb.getMovieDetails(
-                moviedId,
+                movieId,
                 'ko-KR',
                 'credits,videos,images,keywords,release_dates'
             );
