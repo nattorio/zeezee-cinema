@@ -25,7 +25,7 @@ const movieDetailsReducer = (state = initialState, action) => {
                 error: null,
             };
 
-        case FETCH_MORE_REVIEWS_SUCCESS:
+        case FETCH_MOVIE_FULL_DETAILS_SUCCESS:
             return {
                 ...state,
                 current: action.payload,
