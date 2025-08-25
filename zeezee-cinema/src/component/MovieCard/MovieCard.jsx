@@ -23,29 +23,36 @@ function MovieCard({ movie }) {
     };
 
     return (
-        <div className="group cursor-pointer">
-            {/* 포스터 이미지 */}
-            <div className="relative aspect-[2/3] mb-3 overflow-hidden rounded-lg bg-gray-200">
+        <article className="group cursor-pointer">
+            <figure className="relative aspect-[2/3] mb-3 overflow-hidden rounded-lg bg-gray-200">
                 {!imageError ? (
                     <img
                         src={movie.img}
-                        alt={movie.alt}
+                        alt={`${movie.title} 포스터`}
                         className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                         onError={handleImageError}
                         loading="lazy"
                     />
                 ) : (
-                    // 이미지 로드 실패 시 fallback
-                    <div className="w-full h-full bg-gradient-to-br from-gray-300 to-gray-400 flex items-center justify-center">
+                    <div
+                        className="w-full h-full bg-gradient-to-br from-gray-300 to-gray-400 flex items-center justify-center"
+                        role="img"
+                        aria-label={`${movie.title} 포스터 로드 실패`}
+                    >
                         <div className="text-center text-gray-600">
-                            <div className="text-4xl mb-2">🎬</div>
+                            <div className="text-4xl mb-2" aria-hidden="true">
+                                🎬
+                            </div>
                             <div className="text-sm px-2">{movie.title}</div>
                         </div>
                     </div>
                 )}
 
                 {/* 호버 시 오버레이 */}
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300"></div>
+                <div
+                    className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300"
+                    aria-hidden="true"
+                ></div>
 
                 {/* 평점 배지 */}
                 {movie.voteAverage > 0 && (
@@ -53,11 +60,13 @@ function MovieCard({ movie }) {
                         className={`absolute top-2 right-2 ${getRatingColor(
                             movie.voteAverage
                         )} text-white text-xs font-bold px-2 py-1 rounded-full`}
+                        role="img"
+                        aria-label={`평점 ${movie.voteAverage.toFixed(1)}점`}
                     >
-                        ★ {movie.voteAverage.toFixed(1)}
+                        <span aria-hidden="true">★</span> {movie.voteAverage.toFixed(1)}
                     </div>
                 )}
-            </div>
+            </figure>
 
             {/* 영화 정보 */}
             <div className="space-y-1">
@@ -67,9 +76,13 @@ function MovieCard({ movie }) {
                 </h3>
 
                 {/* 연도 */}
-                {movie.releaseDate && <div className="text-xs text-gray-500">{getYear(movie.releaseDate)}</div>}
+                {movie.releaseDate && (
+                    <time className="text-xs text-gray-500 block" dateTime={movie.releaseDate}>
+                        {getYear(movie.releaseDate)}년
+                    </time>
+                )}
             </div>
-        </div>
+        </article>
     );
 }
 
