@@ -59,7 +59,7 @@ const BannerCarousel = () => {
 
     useEffect(() => {
         fetchMovies();
-    }, [fetchMovies]);
+    }, []);
 
     // 재시도 함수
     const handleRetry = () => {
