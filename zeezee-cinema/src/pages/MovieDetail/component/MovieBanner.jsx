@@ -34,7 +34,6 @@ function MovieBanner() {
                 alt={movie?.title || '배너 없음'}
                 className="w-full h-full object-cover"
             />
-            <div className="absolute top-0 left-0 w-full h-full" />
             <div className="absolute bottom-10 left-10 text-white">
                 <h2 className="text-3xl font-bold mb-2">{movie.title}</h2>
                 <p className="mb-1">
