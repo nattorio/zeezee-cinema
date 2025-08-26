@@ -34,8 +34,8 @@ function MovieBanner() {
                 alt={movie?.title || '배너 없음'}
                 className="w-full h-full object-cover"
             />
-            <div className="absolute top-0 left-0 w-full h-full  bg-opacity-40" />
-            <div className="absolute top-10 left-10 bg-opacity-60 p-6 rounded-lg text-white max-w-md">
+            <div className="absolute top-0 left-0 w-full h-full" />
+            <div className="absolute bottom-10 left-10 text-white">
                 <h2 className="text-3xl font-bold mb-2">{movie.title}</h2>
                 <p className="mb-1">
                     {movie?.original_title} | {movie?.release_date} | {movie?.runtime}분 | 평점 {movie?.vote_average}
