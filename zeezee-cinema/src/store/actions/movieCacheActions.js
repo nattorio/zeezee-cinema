@@ -37,7 +37,7 @@ export const removeFromCache = (movieId) => ({
 
 // Thunk Actions
 export const fetchMovieDetail = ({ movieId, forceRefresh = false }) => {
-    return async (dispatchEvent, getState) => {
+    return async (dispatch, getState) => {
         const state = getState();
         const cached = state.movieCache.details[movieId];
         const lastFetched = state.movieCache.lastFetched[movieId];
