@@ -1,15 +1,23 @@
 // BannerCarousel.jsx
 import { useState, useEffect, useCallback } from 'react';
+import { useDispatch } from 'react-redux';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import createMovies from '../../services/movieService';
+import { getMovieId } from '../../store/actions/movieDetailsActions';
 
 const BannerCarousel = () => {
+    const dispatch = useDispatch();
     const [banners, setBanners] = useState([]);
     const [error, setError] = useState(null);
+
+    const handleGetMovieId = (movieId) => {
+        console.log('movieId:', movieId);
+        dispatch(getMovieId(movieId));
+    };
 
     const fetchMovies = useCallback(async () => {
         try {
@@ -65,7 +73,7 @@ const BannerCarousel = () => {
 
     useEffect(() => {
         fetchMovies();
-    }, [fetchMovies]);
+    }, []);
 
     const handleRetry = useCallback(() => {
         fetchMovies();
@@ -199,6 +207,7 @@ const BannerCarousel = () => {
                                     <button
                                         className="bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-200"
                                         aria-label={`${banner.title} 상세 정보 보기`}
+                                        onClick={() => handleGetMovieId(banner.id)}
                                     >
                                         자세히 보기
                                     </button>

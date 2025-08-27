@@ -1,4 +1,5 @@
 import {
+    GET_MOVIE_ID,
     FETCH_MOVIE_FULL_DETAILS_REQUEST,
     FETCH_MOVIE_FULL_DETAILS_SUCCESS,
     FETCH_MOVIE_FULL_DETAILS_FAILURE,
@@ -14,6 +15,21 @@ const initialState = {
     loading: false,
     reviewsLoading: false,
     error: null,
+};
+
+const initialState2 = {
+    id: null,
+};
+
+export const getMovieIdReducer = (state = initialState2, action) => {
+    if (action.type === GET_MOVIE_ID) {
+        return {
+            ...state,
+            id: action.payload.id,
+        };
+    } else {
+        return state;
+    }
 };
 
 const movieDetailsReducer = (state = initialState, action) => {

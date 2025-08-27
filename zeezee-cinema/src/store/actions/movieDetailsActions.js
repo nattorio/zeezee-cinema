@@ -7,6 +7,13 @@ export const clearCurrentMovie = () => ({
     type: types.CLEAR_CURRENT_MOVIE,
 });
 
+export const getMovieId = (movieId) => ({
+    type: types.GET_MOVIE_ID,
+    payload: {
+        id: movieId,
+    },
+});
+
 export const fetchMovieFullDetails = (movieId) => {
     return async (dispatch) => {
         dispatch({ type: types.FETCH_MOVIE_FULL_DETAILS_REQUEST });
