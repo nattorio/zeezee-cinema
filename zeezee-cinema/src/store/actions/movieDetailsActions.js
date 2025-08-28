@@ -1,10 +1,17 @@
-import TMDBapi from '../../pages/MovieDetailPage';
+import TMDBapi from '../../services/movieService';
 import * as types from '../types/actionTypes';
 
 const tmdb = new TMDBapi(import.meta.env.VITE_TMDB_API_KEY);
 
 export const clearCurrentMovie = () => ({
     type: types.CLEAR_CURRENT_MOVIE,
+});
+
+export const getMovieId = (movieId) => ({
+    type: types.GET_MOVIE_ID,
+    payload: {
+        id: movieId,
+    },
 });
 
 export const fetchMovieFullDetails = (movieId) => {
