@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { createMovies } from '../../../services/movieService';
 
 import StarRating from './StarRating';
+import { useParams } from 'react-router-dom';
 const apiKey = import.meta.env.VITE_TMDB_API_KEY;
 const moviesApi = createMovies(apiKey);
 
@@ -10,14 +11,15 @@ function MovieInfo() {
     const [images, setImages] = useState([]);
     const [movie, setMovie] = useState(null);
     const [error, setError] = useState(null);
+    const { movieId } = useParams();
 
     useEffect(() => {
         async function fetchMovieData() {
             try {
-                const movieData = await moviesApi.getMovieDetails(299534, 'ko-KR');
+                const movieData = await moviesApi.getMovieDetails(movieId, 'ko-KR');
                 setMovie(movieData);
 
-                const imageData = await moviesApi.getMovieImages(299534, 'en');
+                const imageData = await moviesApi.getMovieImages(movieId, 'en');
                 setImages(imageData.posters);
             } catch (err) {
                 setError('영화 정보를 불러올 수 없습니다.');
