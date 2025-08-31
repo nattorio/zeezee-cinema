@@ -6,6 +6,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import createMovies from '../../services/movieService';
+import { Link } from 'react-router-dom';
 
 function MovieList({ listTitle }) {
     const [movies, setMovies] = useState([]);
@@ -164,7 +165,9 @@ function MovieList({ listTitle }) {
                 >
                     {movies.map((movie) => (
                         <SwiperSlide key={movie.id}>
-                            <MovieCard movie={movie} />
+                            <Link to={`/movie/${movie.id}`}>
+                                <MovieCard movie={movie} />
+                            </Link>
                         </SwiperSlide>
                     ))}
                 </Swiper>
