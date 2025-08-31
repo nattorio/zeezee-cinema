@@ -6,6 +6,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import createMovies from '../../services/movieService';
+import { Link } from 'react-router-dom';
 
 const BannerCarousel = () => {
     const [banners, setBanners] = useState([]);
@@ -196,12 +197,13 @@ const BannerCarousel = () => {
 
                                 {/* 액션 버튼 */}
                                 <nav>
-                                    <button
+                                    <Link
+                                        to={`/movie/${banner.id}`}
                                         className="bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-200"
                                         aria-label={`${banner.title} 상세 정보 보기`}
                                     >
                                         자세히 보기
-                                    </button>
+                                    </Link>
                                 </nav>
                             </div>
                         </article>
